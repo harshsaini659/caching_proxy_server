@@ -10,13 +10,13 @@ router.get('/*',async (req, res) => {
         const fullUrl = req.originalUrl;
         const path = req.path;
         const resURL = `${BASE_URL}${path}`;
-
+        const cacheKey = req.method + fullUrl+ Number(Date.now());
         const dataFromServer = await axios.get(resURL, req.body);
         console.log('Data fetched from server:', dataFromServer.data[0]);
         cacheService.set(cacheKey, dataFromServer.data);
         res.status(200).json({
-            data: dataFromServer.data,
-            message: "Data posted successfully"
+            fromCache: false,
+            message: "Data fetched successfully"
         })
 
     } catch (error) {

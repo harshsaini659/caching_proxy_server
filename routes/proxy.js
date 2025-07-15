@@ -10,12 +10,24 @@ router.get('/*',async (req, res) => {
         const fullUrl = req.originalUrl;
         const path = req.path;
         const resURL = `${BASE_URL}${path}`;
-        const cacheKey = req.method + fullUrl+ Number(Date.now());
+        const cacheKey = req.method + fullUrl
+
+        //Data getting from cache
+        const dataFromCache = cacheService.get(cacheKey)
+        if(dataFromCache){
+            return res.status(200).json({
+                fromCache: true,
+                data: dataFromCache.data,
+                message: "Data fetched from cache"
+            });
+        }
+
+        //Data getting from server
         const dataFromServer = await axios.get(resURL, req.body);
-        console.log('Data fetched from server:', dataFromServer.data[0]);
         cacheService.set(cacheKey, dataFromServer.data);
         res.status(200).json({
             fromCache: false,
+            data: dataFromServer.data,
             message: "Data fetched successfully"
         })
 

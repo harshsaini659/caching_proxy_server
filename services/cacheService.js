@@ -1,5 +1,4 @@
 let cache = {};
-console.log("Before proxy server start",cache);
 
 function set(key, data) {
   cache[key] = {
@@ -9,4 +8,12 @@ function set(key, data) {
   return cache[key];
 }
 
-module.exports = {set};
+function get(key){
+  const cachedData = cache[key];
+  if(cachedData){
+    return cachedData
+  }
+  return null;
+}
+
+module.exports = {set, get};

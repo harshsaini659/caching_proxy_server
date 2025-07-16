@@ -29,6 +29,19 @@ DELETE removes data from the server. If we return cached data after deletion, it
 So to keep things safe and accurate, I are only caching GET requests in this project.
 
 ---
+## Cache Invalidation (In-Memory)
+Cache invalidation ensures that stale (old or expired) data is not served from cache. In this project, I’ve added a time-based invalidation mechanism.
+How It Works:
+-Every time a response is cached, we also store the timestamp (Date.now()).
+-When the same GET request comes again:
+-Cache is checked for that key.
+-If the timestamp is older than 1 minute(1 minute takes due to testing purpose), the cached data is considered expired.
+-Expired data is ignored, and a fresh request is sent to the actual API.
+-The new response is then re-cached with a new timestamp.
+-This time-based invalidation ensures that users don’t get outdated responses.
+-It also keeps the memory footprint clean, avoiding stale data buildup.
+
+---
 ## Features (Current)
 
 -  Proxy server using Express

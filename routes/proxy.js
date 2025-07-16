@@ -15,9 +15,10 @@ router.get('/*',async (req, res) => {
         //Data getting from cache
         const dataFromCache = cacheService.get(cacheKey)
         if(dataFromCache){
+            console.log("Data from cache",dataFromCache)
             return res.status(200).json({
                 fromCache: true,
-                data: dataFromCache.data,
+                // data: dataFromCache.data,
                 message: "Data fetched from cache"
             });
         }
@@ -27,7 +28,7 @@ router.get('/*',async (req, res) => {
         cacheService.set(cacheKey, dataFromServer.data);
         res.status(200).json({
             fromCache: false,
-            data: dataFromServer.data,
+            // data: dataFromServer.data,
             message: "Data fetched successfully"
         })
 

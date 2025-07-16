@@ -17,6 +17,18 @@ This method is:
 - Best suited for small-scale apps or low-traffic use-cases
 However, since it's stored in memory, the data is lost when the server restarts.
 ---
+## Note: Only GET Requests Are Cached
+In this proxy server project, only GET requests are cached, and here's why:
+GET requests are used only to fetch data from the server. They do not modify or update any data.
+Since the same GET request usually returns the same response, it makes sense to store it in memory (cache) and reuse it when the same request comes again.
+This approach helps to reduce server load and improves response time for repeated requests.
+## Why Not Cache POST, PUT, or DELETE Requests?
+POST is used to send new data to the server. The response might change with every request.
+PUT or PATCH is used to update existing data. If we cache it, we might serve outdated data.
+DELETE removes data from the server. If we return cached data after deletion, it can cause inconsistency.
+So to keep things safe and accurate, I are only caching GET requests in this project.
+
+---
 ## Features (Current)
 
 -  Proxy server using Express

@@ -3,10 +3,20 @@ let usageQueue = [];
 const MAX_CACHE_USAGE = 5;
 
 function set(key, data) {
+
+  if(cache[key]){
+    usageQueue = usageQueue.filter(k => k !== key); // Remove existing key from usage queue
+  }
+  if(usageQueue.length >= MAX_CACHE_USAGE){
+    let lruKey = usageQueue.shift(); //Remove the Least used key
+    delete cache[lruKey];  //Delete from cache
+  }
+
   cache[key] = {
     data: data,
     timestamp: Date.now(),
   };
+  usageQueue.push(key); // Add the key to the end
   return cache[key];
 }
 
@@ -20,13 +30,10 @@ function get(key){
   if(currentTime - cachedTime > maxTime){
     delete cache[key];
     usageQueue = usageQueue.filter(k => k !== key);  // Remove from usage queue if expired
-    console.log(`Cache expired for key: ${key}`);
-    console.log(`Cache Remove from queue: ${usageQueue}`);
     return null;
   }
   usageQueue = usageQueue.filter(k => k !== key); // phle array se remove karege 
   usageQueue.push(key); // fir usko end me add karege
-  console.log("array",usageQueue)
 
   return cachedData.data;
 }

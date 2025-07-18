@@ -15,7 +15,7 @@ router.get('/*',async (req, res) => {
         //Data getting from cache
         const dataFromCache = cacheService.get(cacheKey)
         if(dataFromCache){
-            console.log("Data from cache",dataFromCache)
+            // console.log("Data from cache",dataFromCache)
             return res.status(200).json({
                 fromCache: true,
                 // data: dataFromCache.data,

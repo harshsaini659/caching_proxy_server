@@ -62,7 +62,9 @@ How It Works:
 
 ## LRU(Least Recently Used) Caching
 To optimize memory usage, we implement LRU caching in our proxy server.
+
 ✅ What is LRU?
+
 LRU (Least Recently Used) is a cache eviction policy which removes the least recently used item when the cache is full.
 
 We maintain:

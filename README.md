@@ -11,11 +11,17 @@ For example: Instead of calling an external API every time, we store the respons
 ## What is In-Memory Caching?
 In-memory caching stores data directly in the server's memory (RAM), allowing extremely fast data access. In this project, I use a simple **JavaScript object** as our in-memory store to hold cached API responses.
 This method is:
+
 - Lightweight
+  
 - Fast
+  
 - Easy to implement
+  
 - Best suited for small-scale apps or low-traffic use-cases
+  
 However, since it's stored in memory, the data is lost when the server restarts.
+
 ---
 ## Note: Only GET Requests Are Cached
 In this proxy server project, only GET requests are cached, and here's why:

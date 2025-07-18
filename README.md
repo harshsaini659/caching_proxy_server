@@ -87,15 +87,27 @@ Now new request comes → "F"
 Final Queue After Insertion:
 ["C", "D", "E", "B", "F"]
 ```
+---
 
+## Add Manual Cache Clear Endpoint
+Admin or system can clear cache when needed.
 
-## Features (Curent)
+- Add clear() method in cacheService.js to empty both cache and usageQueue.
+## Add Cache Stats Endpoint
+For debugging or monitoring cache.
 
--  Proxy server using Express
--  In-memory caching using plain JavaScript object
--  Unique cache key generation using HTTP method + request URL
--  Checks cache before making an external API request
--  Stores and returns API response from cache if available
--  Indicates whether response came from cache or server
+---
+
+4. Write README: Features + How It Works
+Add a "How to Run", "Features", "Tech Stack", "How LRU Works", etc.
+
+5. Add Redis Support (Advanced 🔥)
+Current one is in-memory cache. Add a toggleable Redis cache (external memory-based).
+
+6. Add Logging System (Optional)
+Use morgan or winston to log every API call and cache hits/misses.
+
+7. Deploy on Render / Railway / Cyclic
+So you can share your live demo link on resume/GitHub.
 ---
 

@@ -82,6 +82,7 @@ Now you access "B" → move "B" to end
 
 Now new request comes → "F"
 => Cache full, so evict "A" (oldest)
+Final Queue After Insertion:
 ["C", "D", "E", "B", "F"]
 ```
 

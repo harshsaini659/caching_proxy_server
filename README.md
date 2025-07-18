@@ -72,7 +72,7 @@ We maintain:
 -A usageQueue array: tracks usage order of keys
 
 How It Works:
-
+```
 Usage Queue (Oldest → Newest):
 
 ["A", "B", "C", "D", "E"]  ← 5 keys in cache
@@ -83,7 +83,7 @@ Now you access "B" → move "B" to end
 Now new request comes → "F"
 => Cache full, so evict "A" (oldest)
 ["C", "D", "E", "B", "F"]
-
+```
 
 
 ## Features (Curent)

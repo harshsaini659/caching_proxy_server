@@ -63,7 +63,7 @@ How It Works:
 ## LRU(Least Recently Used) Caching
 To optimize memory usage, we implement LRU caching in our proxy server.
 
-✅ What is LRU?
+ What is LRU?
 
 LRU (Least Recently Used) is a cache eviction policy which removes the least recently used item when the cache is full.
 
@@ -90,7 +90,23 @@ Final Queue After Insertion:
 ---
 
 ## Add Manual Cache Clear Endpoint
-Admin or system can clear cache when needed.
+
+A manual cache clearing endpoint allows the **admin** or **system** to explicitly remove all cached data when needed. This is useful in situations where waiting for automatic cache invalidation (based on time or LRU logic) is not ideal.
+
+###  Why We Add This Manually
+
+Even though we have automatic cache expiration and LRU (Least Recently Used) eviction strategies in place, some scenarios demand full and immediate control over the cache. That’s where a manual clear endpoint becomes valuable.
+
+###  Use Cases
+
+- **Data Update on Server:** When the underlying data (on the real API or database) changes due to an update or bug fix, and you want the cache to be refreshed immediately.
+- **Development and Debugging:** During development, developers may want to clear the cache frequently to test fresh data from the server.
+- **Admin Control:** Provide operational teams with the ability to clear the cache without restarting the server or waiting for expiry.
+- **Error Recovery:** In case the cache becomes corrupted or contains bad data, it can be cleared instantly.
+---
+
+
+
 
 - Add clear() method in cacheService.js to empty both cache and usageQueue.
 ## Add Cache Stats Endpoint
@@ -101,7 +117,7 @@ For debugging or monitoring cache.
 4. Write README: Features + How It Works
 Add a "How to Run", "Features", "Tech Stack", "How LRU Works", etc.
 
-5. Add Redis Support (Advanced 🔥)
+5. Add Redis Support (Advanced )
 Current one is in-memory cache. Add a toggleable Redis cache (external memory-based).
 
 6. Add Logging System (Optional)

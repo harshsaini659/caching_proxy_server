@@ -7,13 +7,130 @@ const BASE_URL = 'https://jsonplaceholder.typicode.com'
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     CacheResponse:
+ *       type: object
+ *       properties:
+ *         fromCache:
+ *           type: boolean
+ *           description: Whether data was served from cache
+ *         message:
+ *           type: string
+ *           description: Response message
+ *         data:
+ *           type: object
+ *           description: The actual data (optional)
+ * 
  * /api/posts:
  *   get:
- *     summary: Fetch posts with caching
- *     description: Returns posts data with in-memory caching and LRU logic
+ *     summary: Get all posts
+ *     description: Proxies request to JSONPlaceholder API and caches the response with LRU logic
+ *     tags: [Posts]
  *     responses:
  *       200:
- *         description: Successful response
+ *         description: List of posts retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Internal server error
+ * 
+ * /api/posts/{id}:
+ *   get:
+ *     summary: Get single post by ID
+ *     description: Proxies request to JSONPlaceholder API and caches the response
+ *     tags: [Posts]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Post ID
+ *     responses:
+ *       200:
+ *         description: Single post data retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Internal server error
+ *
+ * /api/posts/{id}/comments:
+ *   get:
+ *     summary: Get comments for a specific post
+ *     description: Proxies request to JSONPlaceholder API and caches the response
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: Post ID
+ *     responses:
+ *       200:
+ *         description: Comments for the post retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Internal server error
+ * 
+ * /api/comments:
+ *   get:
+ *     summary: Get all comments
+ *     description: Proxies request to JSONPlaceholder API and caches the response
+ *     tags: [Comments]
+ *     parameters:
+ *       - in: query
+ *         name: postId
+ *         schema:
+ *           type: integer
+ *         description: Filter comments by post ID
+ *     responses:
+ *       200:
+ *         description: Comments retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Internal server error
+ * 
+ * /api/albums:
+ *   get:
+ *     summary: Get all albums
+ *     description: Proxies request to JSONPlaceholder API and caches the response
+ *     tags: [Albums]
+ *     responses:
+ *       200:
+ *         description: Albums retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Internal server error
+ * 
+ * /api/users:
+ *   get:
+ *     summary: Get all users
+ *     description: Proxies request to JSONPlaceholder API and caches the response
+ *     tags: [Users]
+ *     responses:
+ *       200:
+ *         description: Users retrieved successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Internal server error
  */
 
 router.get('/*',async (req, res) => {

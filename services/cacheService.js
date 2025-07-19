@@ -38,10 +38,22 @@ function get(key){
   return cachedData.data;
 }
 
+function getCacheInfo() {
+  return {
+    maxCacheSize: MAX_CACHE_USAGE,
+    currentCacheSize: usageQueue.length,
+    keysInLRUOrder: [...usageQueue], // ye show karega ki kaunse keys use hui hain
+    cacheData: { ...cache } // optional: remove if data is too large
+  };
+}
+
+module.exports = { set, get, clear, getCacheInfo };
+
+
 function clear() {
   cache = {};
   usageQueue = [];
   console.log("Cache manually cleared");
 }
 
-module.exports = {set, get, clear};
+module.exports = {set, get, getCacheInfo, clear};

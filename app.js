@@ -39,8 +39,8 @@ async function startServer(port = PORT) {
     }
     
     const server = app.listen(port, () => {
-        console.log(`🚀 Server running at http://localhost:${port}`);
-        console.log(`📚 API Docs available at http://localhost:${port}/api-docs`);
+        console.log(`Server running at http://localhost:${port}`);
+        console.log(`API Docs available at http://localhost:${port}/api-docs`);
     });
 
     // Error handling

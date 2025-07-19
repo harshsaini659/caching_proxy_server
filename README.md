@@ -103,12 +103,12 @@ Even though we have automatic cache expiration and LRU (Least Recently Used) evi
 - **Development and Debugging:** During development, developers may want to clear the cache frequently to test fresh data from the server.
 - **Admin Control:** Provide operational teams with the ability to clear the cache without restarting the server or waiting for expiry.
 - **Error Recovery:** In case the cache becomes corrupted or contains bad data, it can be cleared instantly.
+- Add clear() method in cacheService.js to empty both cache and usageQueue.
 ---
 
 
 
 
-- Add clear() method in cacheService.js to empty both cache and usageQueue.
 ## Add Cache Stats Endpoint
 For debugging or monitoring cache.
 

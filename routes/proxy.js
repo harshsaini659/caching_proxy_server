@@ -5,6 +5,17 @@ const cacheService = require('../services/cacheService');
 
 const BASE_URL = 'https://jsonplaceholder.typicode.com'
 
+/**
+ * @swagger
+ * /api/posts:
+ *   get:
+ *     summary: Fetch posts with caching
+ *     description: Returns posts data with in-memory caching and LRU logic
+ *     responses:
+ *       200:
+ *         description: Successful response
+ */
+
 router.get('/*',async (req, res) => {
     try {
         const fullUrl = req.originalUrl;
@@ -38,15 +49,6 @@ router.get('/*',async (req, res) => {
     }
 });
 
-router.delete('/clear-cache', (req, res) => {
-  try {
-    cacheService.clear();
-    res.status(200).json({ message: 'Cache cleared successfully' });
-  } catch (error) {
-    console.error('Error clearing cache:', error);
-    res.status(500).send('Internal Server Error');
-    
-  }
-});
+
 
 module.exports = router;

@@ -47,9 +47,6 @@ function getCacheInfo() {
   };
 }
 
-module.exports = { set, get, clear, getCacheInfo };
-
-
 function clear() {
   cache = {};
   usageQueue = [];

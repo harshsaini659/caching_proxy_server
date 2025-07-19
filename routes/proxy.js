@@ -39,8 +39,14 @@ router.get('/*',async (req, res) => {
 });
 
 router.delete('/clear-cache', (req, res) => {
-  cacheService.clear();
-  res.status(200).json({ message: 'Cache cleared successfully' });
+  try {
+    cacheService.clear();
+    res.status(200).json({ message: 'Cache cleared successfully' });
+  } catch (error) {
+    console.error('Error clearing cache:', error);
+    res.status(500).send('Internal Server Error');
+    
+  }
 });
 
 module.exports = router;

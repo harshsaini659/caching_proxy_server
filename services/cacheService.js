@@ -38,4 +38,10 @@ function get(key){
   return cachedData.data;
 }
 
-module.exports = {set, get};
+function clear() {
+  cache = {};
+  usageQueue = [];
+  console.log("Cache manually cleared");
+}
+
+module.exports = {set, get, clear};

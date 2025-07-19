@@ -38,4 +38,9 @@ router.get('/*',async (req, res) => {
     }
 });
 
+router.delete('/clear-cache', (req, res) => {
+  cacheService.clear();
+  res.status(200).json({ message: 'Cache cleared successfully' });
+});
+
 module.exports = router;

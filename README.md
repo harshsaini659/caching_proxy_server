@@ -1,3 +1,50 @@
+#  Caching Proxy Server - v1(In-memory Javascript cache object)
+
+## 📁 Project Structure
+
+```bash
+.
+├── app.js
+├── routes/
+│   └── proxy.js
+│   └── admin.js
+├── services/
+│   └── cacheService.js
+├── swagger/
+│   └── swagger.js
+├── Dockerfile
+├── .dockerignore
+├── README.md
+└── package.json
+```
+## How to Run the Project (Using Docker)
+- Prerequisites
+Docker Desktop must be installed & running.
+
+**Step 1: Clone the Repo**
+## Clone the Repository
+```bash
+git clone https://github.com/your-username/caching-proxy-server.git
+cd caching-proxy-server
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Caching Proxy Server
 A simple proxy server built with Node.js and Express that implements in-memory caching to optimize repeated API calls and reduce network latency.
 

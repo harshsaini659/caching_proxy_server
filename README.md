@@ -28,6 +28,25 @@ git clone https://github.com/your-username/caching-proxy-server.git
 cd caching-proxy-server
 ```
 
+**Step 2: Build the Docker Image**
+```bash
+docker build -t caching-proxy:v1 .
+```
+
+This command reads the Dockerfile and builds an isolated Docker image for your project.
+
+**Step 3: Run the Container**
+```bash
+docker run -p 3000:3000 caching-proxy:v1
+```
+
+**Step 4: Access Swagger API Docs**
+```bash
+http://localhost:3000/api-docs
+```
+
+Use Swagger UI to test all available endpoints.
+
 
 
 

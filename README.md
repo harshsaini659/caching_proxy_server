@@ -49,7 +49,83 @@ Use Swagger UI to test all available endpoints.
 
 ![Swagger Api](./image/api.png)
 
+## 🧪 How to Test APIs in Swagger
 
+This project uses **Swagger UI** to test and visualize API behavior for the caching system implemented in **Version 1**.
+
+---
+
+### 📄 Project Description
+
+This backend project demonstrates **manual caching logic** using in-memory JavaScript objects. It includes API routes that:
+
+- 🔁 Create cache entries (by fetching from external server)
+- 👀 Retrieve data from cache (if available)
+- ❌ Manually delete cache entries (for testing purposes)
+
+---
+
+### 🔍 Caching APIs (Data Fetching)
+
+The following sections hit the external server and then store data in cache:
+
+- `/posts`
+- `/comments`
+- `/albums`
+- `/users`
+
+📌 **Behavior**:
+- **First hit** → Data is fetched from the server and cached
+- **Subsequent hits** → Data is served directly from cache
+
+---
+
+### 🛡️ Admin APIs (Cache Management)
+
+The `admin` section exposes two key endpoints:
+
+#### 1. `GET /admin/cache-info`
+
+- Shows the **current cache status**
+- Displays:
+  - Number of keys in cache
+  - Key names
+  - Cache usage queue (used for LRU logic)
+- Helps you understand how **Least Recently Used (LRU)** logic automatically removes old cache data when the limit exceeds.
+
+#### 2. `DELETE /clear-cache`
+
+- Deletes the **entire cache manually**
+- Useful for **testing or resetting** the cache
+- Admins or developers can use this to start fresh
+
+---
+
+### 🧠 Behind the Scenes
+
+- The cache uses a JavaScript object to store data
+- LRU (Least Recently Used) logic is applied using a usage queue
+- Cache limit is set to a maximum of 5 keys
+- If the cache is full, the oldest used key is automatically removed (visible in `/admin/cache-info`)
+- Time-based **cache invalidation** is also applied (1-minute expiry)
+
+---
+
+### 🚀 Swagger Access Instructions
+
+- Run the server using Docker or Node
+- Visit `http://localhost:3000/api-docs` to open Swagger UI
+- Test any API like `/posts`, `/users`, etc.
+- Use `GET /admin/cache-info` to inspect the current cache
+- Use `DELETE /clear-cache` to clear it manually
+
+---
+
+Let me know if you also want instructions on how to test all this using Docker or Postman.
+
+
+---
+---
 
 
 

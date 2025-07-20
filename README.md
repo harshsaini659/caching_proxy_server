@@ -55,17 +55,17 @@ This project uses **Swagger UI** to test and visualize API behavior for the cach
 
 ---
 
-### 📄 Project Description
+###  Project Description
 
 This backend project demonstrates **manual caching logic** using in-memory JavaScript objects. It includes API routes that:
 
-- 🔁 Create cache entries (by fetching from external server)
-- 👀 Retrieve data from cache (if available)
-- ❌ Manually delete cache entries (for testing purposes)
+-  Create cache entries (by fetching from external server)
+-  Retrieve data from cache (if available)
+-  Manually delete cache entries (for testing purposes)
 
 ---
 
-### 🔍 Caching APIs (Data Fetching)
+###  Caching APIs (Data Fetching)
 
 The following sections hit the external server and then store data in cache:
 
@@ -74,13 +74,13 @@ The following sections hit the external server and then store data in cache:
 - `/albums`
 - `/users`
 
-📌 **Behavior**:
+ **Behavior**:
 - **First hit** → Data is fetched from the server and cached
 - **Subsequent hits** → Data is served directly from cache
 
 ---
 
-### 🛡️ Admin APIs (Cache Management)
+###  Admin APIs (Cache Management)
 
 The `admin` section exposes two key endpoints:
 
@@ -101,7 +101,7 @@ The `admin` section exposes two key endpoints:
 
 ---
 
-### 🧠 Behind the Scenes
+###  Behind the Scenes
 
 - The cache uses a JavaScript object to store data
 - LRU (Least Recently Used) logic is applied using a usage queue
@@ -111,25 +111,18 @@ The `admin` section exposes two key endpoints:
 
 ---
 
-### 🚀 Swagger Access Instructions
+###  Swagger Access Instructions
 
 - Run the server using Docker or Node
 - Visit `http://localhost:3000/api-docs` to open Swagger UI
 - Test any API like `/posts`, `/users`, etc.
 - Use `GET /admin/cache-info` to inspect the current cache
 - Use `DELETE /clear-cache` to clear it manually
-
 ---
-
-Let me know if you also want instructions on how to test all this using Docker or Postman.
 
 
 ---
 ---
-
-
-
-
 
 # Caching Proxy Server
 A simple proxy server built with Node.js and Express that implements in-memory caching to optimize repeated API calls and reduce network latency.

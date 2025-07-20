@@ -47,16 +47,7 @@ http://localhost:3000/api-docs
 
 Use Swagger UI to test all available endpoints.
 
-
-
-
-
-
-
-
-
-
-
+![Swagger Api](./image/api.png)
 
 
 

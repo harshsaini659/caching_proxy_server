@@ -19,10 +19,10 @@
 ```
 ## How to Run the Project (Using Docker)
 - Prerequisites
+  
 Docker Desktop must be installed & running.
 
 **Step 1: Clone the Repo**
-## Clone the Repository
 ```bash
 git clone https://github.com/your-username/caching-proxy-server.git
 cd caching-proxy-server
